@@ -51,12 +51,7 @@
        
         
             {% block content %}{% endblock %}
-            
-                <div class="w3-container w3-theme-d5 w3-small">
-                    <p>pooland {% now "Y" %}</p>
-                    <div class="intro">
-                    </div>
-                </div>
+            {% include "includes/footer.html" %}
         
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/mysite.js' %}"></script>

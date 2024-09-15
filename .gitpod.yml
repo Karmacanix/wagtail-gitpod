@@ -15,7 +15,7 @@ tasks:
   
 ports:
   - port: 8000
-    onOpen: open-browser
+    onOpen: ignore
 
 vscode:
   extensions:

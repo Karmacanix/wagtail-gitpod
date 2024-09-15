@@ -1,9 +1,19 @@
 {% extends "base.html" %}
 {% load static %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 {% block body_class %}template-homepage{% endblock %}
 <!-- replace everything below with: -->
 {% block content %}
-    {{ page.body|richtext }}
-    <a href="{{ url }}/pooland/">See noted milestones here.</a>
+<div class="w3-container w3-theme">
+    <h1>{{ page.title }}</h1>
+    {% image page.image fill-480x320 %}
+    <p>{{ page.hero_text }}</p>
+    {% if page.hero_cta_link %}
+        <a href="{% pageurl page.hero_cta_link %}">
+            {% firstof page.hero_cta page.hero_cta_link.title %}
+        </a>
+    {% endif %}
+</div>
+
+{{ page.body|richtext }}
 {% endblock %}
