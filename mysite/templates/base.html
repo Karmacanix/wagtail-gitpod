@@ -1,10 +1,10 @@
-{% load static wagtailcore_tags wagtailuserbar %}
+{% load static wagtailcore_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
         
         <title>
             {% block title %}
@@ -22,35 +22,36 @@
 
         {# Force all links in the live preview panel to be opened in a new tab #}
         {% if request.in_preview_panel %}
-        <base target="_blank">
+            <base target="_blank">
         {% endif %}
+
+        <meta name="color-scheme" content="dark">
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍩</text></svg>"/>
+
 
         {# Global stylesheets #}
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-dark-grey.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-deep-purple.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
         <link rel="stylesheet" type="text/css" href="{% static 'css/mysite.css' %}">
         {% block extra_css %}
-        <style>
-            body, h1, h2, h3, h4, h5, h6  {
-              font-family: Roboto, sans-serif;
-            }
-        </style>
+        
         {% endblock %}
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
-        
-        {% wagtailuserbar %}
-            <div class="w3-container w3-theme-d5">
+        {% include "includes/header.html" %}
+            <div class="w3-container w3-theme-d2">
                 <h1>{% now "H:i a" %} in pooland</h1>
                 <div class="intro">
                 </div>
             </div>
        
         
-            {% block content %}{% endblock %}
+            <main class="w3-theme-d5">
+                {% block content %}{% endblock %}
+            </main>
             {% include "includes/footer.html" %}
         
         {# Global javascript #}
