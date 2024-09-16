@@ -54,6 +54,7 @@ class BlogTagIndexPage(Page):
 
 class BlogPage(Page):
     date = models.DateField("Post date")
+    time = models.TimeField("time in pooland")
     intro = models.CharField(max_length=250)
     body = RichTextField(blank=True)
     authors = ParentalManyToManyField('blog.Author', blank=True)
@@ -75,6 +76,7 @@ class BlogPage(Page):
     content_panels = Page.content_panels + [
         MultiFieldPanel([
             FieldPanel('date'),
+             FieldPanel('time'),
             FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
             FieldPanel('tags'),
         ], heading="Blog information"),

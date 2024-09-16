@@ -6,25 +6,22 @@
 {% block body_class %}template-blogpage{% endblock %}
 
 {% block content %}
-<div class="w3-container w3-third">
-    <div class="w3-container w3-theme">
+    <div class="w3-container w3-theme-d5">
         <h2>{{ page.title }}</h2>
         {% with authors=page.authors.all %}
         {% if authors %}
-            <h3>Posted by:</h3>
             <ul>
                 {% for author in authors %}
                     <li style="display: inline">
-                        {% image author.author_image fill-40x60 style="vertical-align: middle" %}
-                        {{ author.name }}
+                        {% image author.author_image scale-5 style="vertical-align: middle" %}
+                        <span style=" font-size: 16px;text-shadow: 1px 1px 1px #ff9933;">{{ author.name }}</span>
                     </li>
                 {% endfor %}
             </ul>
         {% endif %}
         {% endwith %}
         <div class="intro"><p>{{ page.intro }}</p></div>
-    </div>
-    <div class="w3-container w3-theme-l3 w3-text-theme">
+    
         
    
     {{ page.body|richtext }}
@@ -49,8 +46,4 @@
         {% endif %}
     {% endwith %}
     </div>
-    <div class="w3-container w3-theme">
-        <p class="meta">{{ page.date }}</p>
-    </div>
-</div>
 {% endblock %}

@@ -33,23 +33,47 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-deep-purple.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Rubik+Mono+One&family=Titan+One&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
         <link rel="stylesheet" type="text/css" href="{% static 'css/mysite.css' %}">
         {% block extra_css %}
+        <style>
+        .rubik-mono-one-regular {
+            font-family: "Rubik Mono One", monospace;
+            font-weight: 400;
+            font-style: normal;
+        }
+        h1 {
+            font-family: "Titan One";
+            font-size: 60px;
+            text-shadow: 3px 3px 3px #ff9933;
+        }
+        h2 {
+            font-family: "Rubik Mono One";
+            color: #00e6e6;
+            font-size: 30px;
+            text-shadow: 1px 1px 1px #ff9933;
+        }
+        body {
+            font-family: "Noto Sans";
+            font-size: 14px;
+        }
+        a {
+            color: hotpink;
+            text-decoration: none;
+        }
         
+        </style>
         {% endblock %}
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
         {% include "includes/header.html" %}
-            <div class="w3-container w3-theme-d2">
-                <h1>{% now "H:i a" %} in pooland</h1>
-                <div class="intro">
-                </div>
+            <div class="w3-container w3-theme-d2 w3-round-xlarge w3-center">
+                <h1>{% now "h:i a" %} in pooland</h1>
             </div>
-       
         
-            <main class="w3-theme-d5">
+            <main class="w3-main w3-theme-d4 w3-round-xlarge w3-center">
                 {% block content %}{% endblock %}
             </main>
             {% include "includes/footer.html" %}
