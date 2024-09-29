@@ -6,7 +6,7 @@
 {% block body_class %}template-blogpage{% endblock %}
 
 {% block content %}
-    <div class="w3-container w3-theme-d5">
+    <div class="w3-container w3-theme-d5 w3-round-xlarge ">
         <h2>{{ page.title }}</h2>
         {% with authors=page.authors.all %}
         {% if authors %}
@@ -22,11 +22,8 @@
         {% endwith %}
         <div class="intro"><p>{{ page.intro }}</p></div>
     
-        
-   
-    {{ page.body|richtext }}
+        <div class="w3-container w3-round-xlarge w3-theme-l3 w3-text-theme w3-justify">{{ page.body|richtext }}</div>
 
-    <!-- Add this: -->
     {% for item in page.gallery_images.all %}
         <div style="float: inline-start; margin: 10px">
             {% image item.image fill-320x240 %}
@@ -40,10 +37,11 @@
             <div class="tags">
                 <h3>Tags</h3>
                 {% for tag in tags %}
-                    <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button type="button">{{ tag }}</button></a>
+                    <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button type="button"><span style="text-shadow: 1px 1px 1px #000000;">{{ tag }}</span></button></a>
                 {% endfor %}
             </div>
         {% endif %}
     {% endwith %}
+    <br>
     </div>
 {% endblock %}

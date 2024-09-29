@@ -1,6 +1,7 @@
 {% load wagtailcore_tags navigation_tags wagtailuserbar %}
 
-<header class="w3-theme-d5">
+
+<header class="w3-round-xlarge">
     {% get_site_root as site_root %}
     <nav>
         <p>
@@ -9,7 +10,11 @@
                 <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>{% if not forloop.last %} | {% endif %}
             
             {% endfor %}
+            {% url 'login' %}
         </p>
     </nav>
+    <div class="w3-container w3-center">
+        <h1>{% now "h:i a" %} in pooland</h1>
+    </div>
     {% wagtailuserbar "top-right" %}
 </header>

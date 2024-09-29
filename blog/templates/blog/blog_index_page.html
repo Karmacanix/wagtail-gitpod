@@ -9,17 +9,19 @@
     {% for post in blogpages %}
         {% with post=post.specific %}
         <a href="{% pageurl post %}">
-            <div class="w3-container w3-theme-d5">
-                <h2>{{ post.time|time:"h:i a" }} {{ post.title }}</h2>
-                {% with post.main_image as main_image %}
-                    {% if main_image %}{% image main_image fill-160x100 %}{% endif %}
-                {% endwith %}
-                <p>{{ post.intro }}</p>
-            </div></a>
-            <div class="w3-container w3-theme-l3 w3-text-theme w3-justify">
+        <div class="w3-container">
+            <h2>{{ post.time|time:"h:i a" }} {{ post.title }}</h2>
+            {% with post.main_image as main_image %}
+                {% if main_image %}{% image main_image fill-160x100 %}{% endif %}
+            {% endwith %}
+            <p>{{ post.intro }}</p>
+            </a>
+            <div class="w3-container w3-round-xlarge w3-theme-l3 w3-text-theme w3-justify">
                 {{ post.body|richtext }}
             </div>
-        
+            <br>
+        </div>
+        <br>
         {% endwith %}
     {% endfor %}
     

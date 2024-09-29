@@ -1,21 +1,21 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags %}
+{% load static wagtailcore_tags %}
 
 {% block content %}
+    <div class="w3-container w3-theme-d5 w3-round-xlarge ">
+        {% if request.GET.tag %}
+            <h4>Showing pages tagged "{{ request.GET.tag }}"</h4>
+        {% endif %}
 
-    {% if request.GET.tag %}
-        <h4>Showing pages tagged "{{ request.GET.tag }}"</h4>
-    {% endif %}
+        {% for blogpage in blogpages %}
 
-    {% for blogpage in blogpages %}
+            <p>
+                <strong><a href="{% pageurl blogpage %}">{{ blogpage.title }}</a></strong><br />
+                <small>Revised: {{ blogpage.latest_revision_created_at }}</small><br />
+            </p>
 
-          <p>
-              <strong><a href="{% pageurl blogpage %}">{{ blogpage.title }}</a></strong><br />
-              <small>Revised: {{ blogpage.latest_revision_created_at }}</small><br />
-          </p>
-
-    {% empty %}
-        No pages found with that tag.
-    {% endfor %}
-
+        {% empty %}
+            No pages found with that tag.
+        {% endfor %}
+    </div>
 {% endblock %}
