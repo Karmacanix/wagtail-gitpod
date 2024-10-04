@@ -1,5 +1,5 @@
 {% load wagtailcore_tags navigation_tags wagtailuserbar %}
-
+{% load allauth account %}
 
 <header class="w3-round-xlarge">
     {% get_site_root as site_root %}
@@ -10,7 +10,8 @@
                 <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>{% if not forloop.last %} | {% endif %}
             
             {% endfor %}
-            {% url 'login' %}
+            {% if request.user.is_authenticated %}{% url 'account_logout' %}
+            {% else %}{% url 'account_login' %}{% endif %}
         </p>
     </nav>
     <div class="w3-container w3-center">
